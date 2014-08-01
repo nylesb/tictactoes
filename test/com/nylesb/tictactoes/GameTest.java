@@ -1,15 +1,25 @@
 package com.nylesb.tictactoes;
 
+import org.junit.Before;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 public class GameTest {
+
+    private Board mockBoard;
+    private Player mockPlayer1;
+    private Game game;
+
+    @Before
+    public void setUp() throws Exception {
+        mockBoard = mock(Board.class);
+        mockPlayer1 = mock(Player.class);
+        game = new Game(mockBoard, mockPlayer1);
+    }
+
     @org.junit.Test
     public void shouldPrintABoardString() throws Exception {
-        Board mockBoard = mock(Board.class);
-        Player mockPlayer1 = mock(Player.class);
-
-        Game game = new Game(mockBoard, mockPlayer1);
         game.displayBoard();
 
         verify(mockBoard).display();
@@ -17,10 +27,6 @@ public class GameTest {
 
     @org.junit.Test
     public void shouldTellPlayer1ToMakeAMove()  {
-        Board mockBoard = mock(Board.class);
-        Player mockPlayer1 = mock(Player.class);
-
-        Game game = new Game(mockBoard, mockPlayer1);
         game.tellPlayer1ToMakeAMove();
 
         verify(mockPlayer1).move();
