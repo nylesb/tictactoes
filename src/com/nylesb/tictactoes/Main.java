@@ -5,9 +5,10 @@ package com.nylesb.tictactoes;
  */
 public class Main {
     public static void main(String[] args) {
-        Board board = new Board(new Printer());
+        Printer printer = new Printer();
+        Board board = new Board(printer);
         Player player1 = new Player();
-        Game game = new Game(board, player1);
+        Game game = new Game(board, player1, printer);
         game.displayBoard();
         game.tellPlayer1ToMakeAMove();
 
