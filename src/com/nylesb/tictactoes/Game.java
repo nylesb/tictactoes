@@ -4,13 +4,14 @@ package com.nylesb.tictactoes;
  * Created by Nyles on 7/31/2014.
  */
 public class Game {
+    private Printer printer;
 
-    public String displayBoard() {
-        String boardString = "  |   |  \n" +
-                             "---------\n" +
-                             "  |   |  \n" +
-                             "---------\n" +
-                             "  |   |  \n";
-        return boardString;
+    public Game(Printer printer) {
+        this.printer = printer;
+    }
+
+    public void displayBoard() {
+        Board board = new Board();
+        printer.display(board.display());
     }
 }
