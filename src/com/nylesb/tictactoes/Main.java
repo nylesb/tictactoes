@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Printer printer = new Printer();
         Board board = new Board(printer);
-        Player player1 = new Player();
+        Player player1 = new Player(new UserInput());
         Game game = new Game(board, player1, printer);
         game.displayBoard();
         game.tellPlayerToMakeAMove();
