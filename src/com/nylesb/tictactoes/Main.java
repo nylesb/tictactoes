@@ -10,7 +10,7 @@ public class Main {
         Player player1 = new Player();
         Game game = new Game(board, player1, printer);
         game.displayBoard();
-        game.tellPlayer1ToMakeAMove();
+        game.tellPlayerToMakeAMove();
 
 //        String input = "";
 //        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

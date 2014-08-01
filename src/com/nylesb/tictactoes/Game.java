@@ -18,8 +18,8 @@ public class Game {
         board.display();
     }
 
-    public void tellPlayer1ToMakeAMove() {
-        String message = "Player 1 enter a number between 1 and 9 to indicate your move: ";
+    public void tellPlayerToMakeAMove() {
+        String message = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
         printer.print(message);
         player1.move();
     }
