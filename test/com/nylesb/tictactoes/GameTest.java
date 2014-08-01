@@ -8,13 +8,11 @@ import static org.mockito.Mockito.when;
 public class GameTest {
     @org.junit.Test
     public void shouldPrintABoardString() throws Exception {
-        Printer mockPrinter = mock(Printer.class);
-        Board stubBoard = mock(Board.class);
-        when(stubBoard.display()).thenReturn("mock");
+        Board mockBoard = mock(Board.class);
 
-        Game game = new Game(mockPrinter, stubBoard);
+        Game game = new Game(mockBoard);
         game.displayBoard();
 
-        verify(mockPrinter).display("mock");
+        verify(mockBoard).display();
     }
 }
