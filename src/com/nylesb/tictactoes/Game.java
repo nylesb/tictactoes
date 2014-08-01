@@ -5,13 +5,14 @@ package com.nylesb.tictactoes;
  */
 public class Game {
     private Printer printer;
+    private Board board;
 
-    public Game(Printer printer) {
+    public Game(Printer printer, Board board) {
         this.printer = printer;
+        this.board = board;
     }
 
     public void displayBoard() {
-        Board board = new Board();
         printer.display(board.display());
     }
 }
