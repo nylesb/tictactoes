@@ -7,9 +7,13 @@ import java.util.ArrayList;
  */
 public class Board {
     private GameOutput gameOutput;
+    private ArrayList<String> state = new ArrayList<String>(); // Why new here?
 
     public Board(GameOutput gameOutput) {
         this.gameOutput = gameOutput;
+        for (int i = 0; i < 9; i++) {
+            this.state.add(" ");
+        }
     }
 
     public void display() {
@@ -18,5 +22,9 @@ public class Board {
             boardData.add(" ");
         }
         gameOutput.printBoard(boardData);
+    }
+
+    public ArrayList<String> getBoard() {
+        return this.state;
     }
 }

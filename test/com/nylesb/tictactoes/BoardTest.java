@@ -1,7 +1,10 @@
 package com.nylesb.tictactoes;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -18,5 +21,19 @@ public class BoardTest {
         board.display();
 
         verify(mockGameOutput).printBoard(boardData);
+    }
+
+    @Test
+    public void shouldInitializeEmptyBoard() throws Exception {
+        ArrayList<String> expected = new ArrayList<String>();
+        for (int i = 0; i < 9; i++) {
+            expected.add(" ");
+        }
+        GameOutput mockGameOutput = mock(GameOutput.class);
+
+        Board board = new Board(mockGameOutput);
+
+        assertEquals(expected, board.getBoard());
+
     }
 }
