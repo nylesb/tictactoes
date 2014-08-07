@@ -1,5 +1,7 @@
 package com.nylesb.tictactoes;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nyles on 7/31/2014.
  */
@@ -11,11 +13,10 @@ public class Board {
     }
 
     public void display() {
-        String boardString = "   |   |   \n" +
-                             "-----------\n" +
-                             "   |   |   \n" +
-                             "-----------\n" +
-                             "   |   |   \n";
-        gameOutput.print(boardString);
+        ArrayList<String> boardData = new ArrayList<String>();
+        for (int i = 0; i < 9; i++) {
+            boardData.add(" ");
+        }
+        gameOutput.printBoard(boardData);
     }
 }
