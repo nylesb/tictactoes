@@ -1,18 +1,49 @@
 package com.nylesb.tictactoes;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class PlayerTest {
+    private UserInput mockUserInput;
+    private Board board;
+    private GameOutput mockGameOutput;
+
+    @Before
+    public void setUp() throws Exception {
+        this.mockUserInput = mock(UserInput.class);
+        this.mockGameOutput = mock(GameOutput.class);
+        this.board = new Board(mockGameOutput);
+    }
+
     @Test
     public void shouldGetUserInput() throws Exception {
-        UserInput mockedUserInput = mock(UserInput.class);
-        Player player = new Player(mockedUserInput);
-
+        when(mockUserInput.readChoice()).thenReturn("1");
+        Player player = new Player(mockUserInput, board);
         player.move();
 
-        verify(mockedUserInput).readChoice();
+        verify(mockUserInput).readChoice();
+    }
+
+    @Test
+    public void shouldUpdateBoardFromUserInputAndPrint() throws Exception {
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("X");
+        for (int i = 0; i < 8; i++) {
+            expected.add(" ");
+        }
+        when(mockUserInput.readChoice()).thenReturn("1");
+
+        Player player = new Player(mockUserInput, board);
+        player.move();
+
+        assertEquals(expected, board.getBoard());
+        verify(mockGameOutput).printBoard(board.getBoard());
     }
 }

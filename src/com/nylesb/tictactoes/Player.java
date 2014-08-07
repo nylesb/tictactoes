@@ -5,13 +5,16 @@ package com.nylesb.tictactoes;
  */
 public class Player {
     private UserInput userInput;
+    private Board board;
 
-    public Player(UserInput userInput) {
-
+    public Player(UserInput userInput, Board board) {
         this.userInput = userInput;
+        this.board = board;
     }
 
     public void move() {
-        userInput.readChoice();
+        int choice = Integer.parseInt(userInput.readChoice());
+        board.update(choice, "X");
+        board.display();
     }
 }

@@ -45,7 +45,7 @@ public class BoardTest {
         expected.set(0, "X");
 
         Board board = new Board(mockGameOutput);
-        board.update(0, "X");
+        board.update(1, "X");
 
         assertEquals(expected, board.getBoard());
     }

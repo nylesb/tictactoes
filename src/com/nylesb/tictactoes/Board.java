@@ -25,6 +25,6 @@ public class Board {
     }
 
     public void update(int position, String value) {
-        state.set(position, value);
+        state.set(position - 1 , value);
     }
 }
