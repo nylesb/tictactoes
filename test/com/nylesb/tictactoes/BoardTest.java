@@ -1,39 +1,52 @@
 package com.nylesb.tictactoes;
 
+import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.MockitoAnnotations.initMocks;
 
 public class BoardTest {
-    @org.junit.Test
-    public void shouldDisplayTheBoard() throws Exception {
-        GameOutput mockGameOutput = mock(GameOutput.class);
-        ArrayList<String> boardData = new ArrayList<String>();
-        for (int i = 0; i < 9; i++) {
-            boardData.add(" ");
-        }
+    private ArrayList<String> emptyBoard = new ArrayList<String>();
+    @Mock private GameOutput mockGameOutput;
 
+    @Before
+    public void setUp() throws Exception {
+        initMocks(this);
+        for (int i = 0; i < 9; i++) {
+            emptyBoard.add(" ");
+        }
+    }
+
+    @org.junit.Test
+    public void shouldDisplayEmptyBoard() throws Exception {
         Board board = new Board(mockGameOutput);
         board.display();
 
-        verify(mockGameOutput).printBoard(boardData);
+        verify(mockGameOutput).printBoard(emptyBoard);
     }
 
     @Test
     public void shouldInitializeEmptyBoard() throws Exception {
-        ArrayList<String> expected = new ArrayList<String>();
-        for (int i = 0; i < 9; i++) {
-            expected.add(" ");
-        }
-        GameOutput mockGameOutput = mock(GameOutput.class);
+        ArrayList<String> expected = emptyBoard;
 
         Board board = new Board(mockGameOutput);
 
         assertEquals(expected, board.getBoard());
+    }
 
+    @Test
+    public void shouldModifyBoardState() throws Exception {
+        ArrayList<String> expected = emptyBoard;
+        expected.set(0, "X");
+
+        Board board = new Board(mockGameOutput);
+        board.update(0, "X");
+
+        assertEquals(expected, board.getBoard());
     }
 }

@@ -17,14 +17,14 @@ public class Board {
     }
 
     public void display() {
-        ArrayList<String> boardData = new ArrayList<String>();
-        for (int i = 0; i < 9; i++) {
-            boardData.add(" ");
-        }
-        gameOutput.printBoard(boardData);
+        gameOutput.printBoard(state);
     }
 
     public ArrayList<String> getBoard() {
         return this.state;
+    }
+
+    public void update(int position, String value) {
+        state.set(position, value);
     }
 }
