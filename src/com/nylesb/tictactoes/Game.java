@@ -6,12 +6,12 @@ package com.nylesb.tictactoes;
 public class Game {
     private Board board;
     private Player player1;
-    private Printer printer;
+    private GameOutput gameOutput;
 
-    public Game(Board board, Player player1, Printer printer) {
+    public Game(Board board, Player player1, GameOutput gameOutput) {
         this.board = board;
         this.player1 = player1;
-        this.printer = printer;
+        this.gameOutput = gameOutput;
     }
 
     public void displayBoard() {
@@ -20,7 +20,7 @@ public class Game {
 
     public void tellPlayerToMakeAMove() {
         String message = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
-        printer.print(message);
+        gameOutput.print(message);
         player1.move();
     }
 }

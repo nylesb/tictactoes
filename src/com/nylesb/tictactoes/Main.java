@@ -8,11 +8,11 @@ import java.io.InputStreamReader;
  */
 public class Main {
     public static void main(String[] args) {
-        Printer printer = new Printer();
+        GameOutput gameOutput = new GameOutput();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        Board board = new Board(printer);
+        Board board = new Board(gameOutput);
         Player player1 = new Player(new UserInput(bufferedReader));
-        Game game = new Game(board, player1, printer);
+        Game game = new Game(board, player1, gameOutput);
         game.displayBoard();
         game.tellPlayerToMakeAMove();
     }

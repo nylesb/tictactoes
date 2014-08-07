@@ -11,13 +11,13 @@ public class GameTest {
 
     @Mock private Board mockBoard;
     @Mock private Player mockPlayer1;
-    @Mock private Printer mockPrinter;
+    @Mock private GameOutput mockGameOutput;
     private Game game;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        game = new Game(mockBoard, mockPlayer1, mockPrinter);
+        game = new Game(mockBoard, mockPlayer1, mockGameOutput);
     }
 
     @Test
@@ -40,6 +40,6 @@ public class GameTest {
 
         game.tellPlayerToMakeAMove();
 
-        verify(mockPrinter).print(expected);
+        verify(mockGameOutput).print(expected);
     }
 }
