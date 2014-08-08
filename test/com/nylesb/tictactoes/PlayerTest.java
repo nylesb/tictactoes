@@ -42,6 +42,23 @@ public class PlayerTest {
         }
         when(mockUserInput.readChoice()).thenReturn("1");
 
+        player.setToken("X");
+        player.move();
+
+        assertEquals(expected, board.getBoard());
+        verify(mockGameOutput).printBoard(board.getBoard());
+    }
+
+    @Test
+    public void shouldUpdateBoardFromPlayerToken() throws Exception {
+        ArrayList<String> expected = new ArrayList<String>();
+        expected.add("O");
+        for (int i = 0; i < 8; i++) {
+            expected.add(" ");
+        }
+        when(mockUserInput.readChoice()).thenReturn("1");
+
+        player.setToken("O");
         player.move();
 
         assertEquals(expected, board.getBoard());

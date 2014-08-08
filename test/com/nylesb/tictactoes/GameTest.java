@@ -59,12 +59,11 @@ public class GameTest {
     @Test
     public void shouldSetPlayerTokens() throws Exception {
         game.getPlayer(1).setToken("X");
-        game.getPlayer(2).setToken("O");
-
         when(mockPlayer1.getToken()).thenReturn("X");
-        assertEquals("X", game.getPlayer(1).getToken());
-
+        game.getPlayer(2).setToken("O");
         when(mockPlayer2.getToken()).thenReturn("O");
+
+        assertEquals("X", game.getPlayer(1).getToken());
         assertEquals("O", game.getPlayer(2).getToken());
     }
 }

@@ -15,7 +15,7 @@ public class Player {
 
     public void move() {
         int choice = Integer.parseInt(userInput.readChoice());
-        board.update(choice, "X");
+        board.update(choice, token);
         board.display();
     }
 
@@ -24,6 +24,6 @@ public class Player {
     }
 
     public String getToken() {
-        return "Cat";
+        return token;
     }
 }
