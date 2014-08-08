@@ -4,9 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class GameTest {
@@ -57,13 +55,8 @@ public class GameTest {
     }
 
     @Test
-    public void shouldSetPlayerTokens() throws Exception {
-        game.getPlayer(1).setToken("X");
-        when(mockPlayer1.getToken()).thenReturn("X");
-        game.getPlayer(2).setToken("O");
-        when(mockPlayer2.getToken()).thenReturn("O");
-
-        assertEquals("X", game.getPlayer(1).getToken());
-        assertEquals("O", game.getPlayer(2).getToken());
+    public void shouldInitializePlayerTokens() throws Exception {
+        verify(mockPlayer1).setToken("X");
+        verify(mockPlayer2).setToken("O");
     }
 }

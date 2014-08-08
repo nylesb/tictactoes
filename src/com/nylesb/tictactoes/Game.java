@@ -12,7 +12,9 @@ public class Game {
 
     public Game(Board board, Player player1, Player player2, GameOutput gameOutput) {
         this.board = board;
+        player1.setToken("X");
         this.player.add(player1);
+        player2.setToken("O");
         this.player.add(player2);
         this.gameOutput = gameOutput;
     }
