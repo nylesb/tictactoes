@@ -63,7 +63,7 @@ public class PlayerTest {
 
     @Test
     public void shouldPromptAgainIfChoiceAlreadyTaken() throws Exception {
-        when(mockUserInput.readChoice()).thenReturn("1");
+        when(mockUserInput.readChoice()).thenReturn("1", "1", "2");
 
         player.move();
         player.move();

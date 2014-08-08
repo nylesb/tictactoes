@@ -14,10 +14,11 @@ public class Player {
     }
 
     public void move() {
-        int choice = Integer.parseInt(userInput.readChoice());
-        if(!board.update(choice, token)) {
-            choice = Integer.parseInt(userInput.readChoice());
-            board.update(choice, token);
+        while(true) {
+            int choice = Integer.parseInt(userInput.readChoice());
+            if(board.update(choice, token)) {
+                break;
+            }
         }
     }
 
