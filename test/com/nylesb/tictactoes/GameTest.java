@@ -4,7 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class GameTest {
@@ -30,17 +32,11 @@ public class GameTest {
 
     @Test
     public void shouldTellPlayer1ToMakeAMove()  {
-        game.tellPlayerToMakeAMove(1);
-
-        verify(game.getPlayer(1)).move();
-    }
-
-    @Test
-    public void shouldDisplayPromptMessageForPlayer1ToMakeMove() throws Exception {
         String expected = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
 
         game.tellPlayerToMakeAMove(1);
 
+        verify(game.getPlayer(1)).move();
         verify(mockGameOutput).print(expected);
     }
 
@@ -52,17 +48,23 @@ public class GameTest {
 
     @Test
     public void shouldTellPlayer2ToMakeAMove() throws Exception {
-        game.tellPlayerToMakeAMove(2);
-
-        verify(game.getPlayer(2)).move();
-    }
-
-    @Test
-    public void shouldDisplayPromptMessageForPlayer2ToMakeMove() throws Exception {
         String expected = "Player 2 - Enter a number between 1 and 9 to indicate your move: ";
 
         game.tellPlayerToMakeAMove(2);
 
+        verify(game.getPlayer(2)).move();
         verify(mockGameOutput).print(expected);
+    }
+
+    @Test
+    public void shouldSetPlayerTokens() throws Exception {
+        game.getPlayer(1).setToken("X");
+        game.getPlayer(2).setToken("O");
+
+        when(mockPlayer1.getToken()).thenReturn("X");
+        assertEquals("X", game.getPlayer(1).getToken());
+
+        when(mockPlayer2.getToken()).thenReturn("O");
+        assertEquals("O", game.getPlayer(2).getToken());
     }
 }

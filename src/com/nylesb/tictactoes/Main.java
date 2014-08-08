@@ -16,5 +16,6 @@ public class Main {
         Game game = new Game(board, player1, player2, gameOutput);
         game.displayBoard();
         game.tellPlayerToMakeAMove(1);
+        game.tellPlayerToMakeAMove(2);
     }
 }

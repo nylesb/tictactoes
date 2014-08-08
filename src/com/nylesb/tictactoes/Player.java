@@ -6,6 +6,7 @@ package com.nylesb.tictactoes;
 public class Player {
     private UserInput userInput;
     private Board board;
+    private String token;
 
     public Player(UserInput userInput, Board board) {
         this.userInput = userInput;
@@ -16,5 +17,13 @@ public class Player {
         int choice = Integer.parseInt(userInput.readChoice());
         board.update(choice, "X");
         board.display();
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return "Cat";
     }
 }
