@@ -56,4 +56,13 @@ public class GameTest {
 
         verify(game.getPlayer(2)).move();
     }
+
+    @Test
+    public void shouldDisplayPromptMessageForPlayer2ToMakeMove() throws Exception {
+        String expected = "Player 2 - Enter a number between 1 and 9 to indicate your move: ";
+
+        game.tellPlayerToMakeAMove(2);
+
+        verify(mockGameOutput).print(expected);
+    }
 }

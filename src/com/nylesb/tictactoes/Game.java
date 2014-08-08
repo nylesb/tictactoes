@@ -22,7 +22,7 @@ public class Game {
     }
 
     public void tellPlayerToMakeAMove(int number) {
-        String message = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
+        String message = String.format("Player %s - Enter a number between 1 and 9 to indicate your move: ", number);
         gameOutput.print(message);
         player.get(number - 1).move();
     }
