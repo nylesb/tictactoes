@@ -6,9 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class PlayerTest {
     private UserInput mockUserInput;
@@ -61,5 +59,15 @@ public class PlayerTest {
         player.move();
 
         assertEquals(expected, board.getBoard());
+    }
+
+    @Test
+    public void shouldPromptAgainIfChoiceAlreadyTaken() throws Exception {
+        when(mockUserInput.readChoice()).thenReturn("1");
+
+        player.move();
+        player.move();
+
+        verify(mockUserInput, atLeast(3)).readChoice();
     }
 }

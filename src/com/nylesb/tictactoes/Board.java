@@ -24,12 +24,14 @@ public class Board {
         return this.state;
     }
 
-    public void update(int position, String value) {
+    public boolean update(int position, String value) {
         if(state.get(position - 1) == " ") {
             state.set(position - 1, value);
+            return true;
         }
         else {
             gameOutput.print("Location already taken");
+            return false;
         }
     }
 }
