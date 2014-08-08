@@ -14,18 +14,20 @@ public class PlayerTest {
     private UserInput mockUserInput;
     private Board board;
     private GameOutput mockGameOutput;
+    private Player player;
 
     @Before
     public void setUp() throws Exception {
         this.mockUserInput = mock(UserInput.class);
         this.mockGameOutput = mock(GameOutput.class);
         this.board = new Board(mockGameOutput);
+        this.player = new Player(mockUserInput, board);
     }
 
     @Test
     public void shouldGetUserInput() throws Exception {
         when(mockUserInput.readChoice()).thenReturn("1");
-        Player player = new Player(mockUserInput, board);
+
         player.move();
 
         verify(mockUserInput).readChoice();
@@ -40,7 +42,6 @@ public class PlayerTest {
         }
         when(mockUserInput.readChoice()).thenReturn("1");
 
-        Player player = new Player(mockUserInput, board);
         player.move();
 
         assertEquals(expected, board.getBoard());

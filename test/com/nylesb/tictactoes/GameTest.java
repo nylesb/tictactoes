@@ -11,13 +11,14 @@ public class GameTest {
 
     @Mock private Board mockBoard;
     @Mock private Player mockPlayer1;
+    @Mock private Player mockPlayer2;
     @Mock private GameOutput mockGameOutput;
     private Game game;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        game = new Game(mockBoard, mockPlayer1, mockGameOutput);
+        game = new Game(mockBoard, mockPlayer1, mockPlayer2, mockGameOutput);
     }
 
     @Test
@@ -41,5 +42,11 @@ public class GameTest {
         game.tellPlayerToMakeAMove();
 
         verify(mockGameOutput).print(expected);
+    }
+
+    @Test
+    public void shouldContainTwoPlayerObjects() throws Exception {
+        assert(game.getPlayer(1) instanceof Player);
+        assert(game.getPlayer(2) instanceof Player);
     }
 }
