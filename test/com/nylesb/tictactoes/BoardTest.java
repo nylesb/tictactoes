@@ -57,4 +57,18 @@ public class BoardTest {
 
         verify(mockGameOutput).print(expected);
     }
+
+    @Test
+    public void shouldNotifyAboutFullBoard() throws Exception {
+        String expectedReturn = "Full";
+        String message = "Board is full!";
+        for (int i = 1; i <= 9; i++) {
+            board.update(i, "X");
+        }
+
+        String result = board.update(1, "X");
+
+        assertEquals(expectedReturn, result);
+        verify(mockGameOutput).print(message);
+    }
 }

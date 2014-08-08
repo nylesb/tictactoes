@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Board {
     private GameOutput gameOutput;
     private ArrayList<String> state = new ArrayList<String>(); // Why new here?
+    private int emptySpaces = 9;
 
     public Board(GameOutput gameOutput) {
         this.gameOutput = gameOutput;
@@ -24,14 +25,19 @@ public class Board {
         return this.state;
     }
 
-    public boolean update(int position, String value) {
-        if(state.get(position - 1) == " ") {
+    public String update(int position, String value) {
+        if(emptySpaces == 0) {
+            gameOutput.print("Board is full!");
+            return "Full";
+        }
+        else if(state.get(position - 1) == " ") {
             state.set(position - 1, value);
-            return true;
+            emptySpaces--;
+            return "Updated";
         }
         else {
             gameOutput.print("Location already taken, try again: ");
-            return false;
+            return "Taken";
         }
     }
 }

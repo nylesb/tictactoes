@@ -16,7 +16,7 @@ public class Player {
     public void move() {
         while(true) {
             int choice = Integer.parseInt(userInput.readChoice());
-            if(board.update(choice, token)) {
+            if(board.update(choice, token) == "Updated") {
                 break;
             }
         }
