@@ -33,4 +33,11 @@ public class Game {
     public Player getPlayer(int number) {
         return player.get(number - 1);
     }
+
+    public void runGame() {
+        for (int i = 0; i < 5; i++) {
+            getPlayer(1).move();
+            getPlayer(2).move();
+        }
+    }
 }

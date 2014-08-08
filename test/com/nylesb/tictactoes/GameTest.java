@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -59,5 +60,15 @@ public class GameTest {
     public void shouldInitializePlayerTokens() throws Exception {
         verify(mockPlayer1).setToken("X");
         verify(mockPlayer2).setToken("O");
+    }
+
+    @Test
+    public void shouldAcceptInputsUntilBoardIsFullThenPrint() throws Exception {
+        String fullMessage = "Board is full!";
+
+        game.runGame();
+
+        verify(mockPlayer1, atLeast(5)).move();
+        verify(mockPlayer2, atLeast(4)).move();
     }
 }
