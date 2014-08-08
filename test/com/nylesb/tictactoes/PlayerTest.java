@@ -34,7 +34,7 @@ public class PlayerTest {
     }
 
     @Test
-    public void shouldUpdateBoardFromUserInputAndPrint() throws Exception {
+    public void shouldUpdateBoardFromUserInput() throws Exception {
         ArrayList<String> expected = new ArrayList<String>();
         expected.add("X");
         for (int i = 0; i < 8; i++) {
@@ -46,7 +46,6 @@ public class PlayerTest {
         player.move();
 
         assertEquals(expected, board.getBoard());
-        verify(mockGameOutput).printBoard(board.getBoard());
     }
 
     @Test
@@ -62,6 +61,5 @@ public class PlayerTest {
         player.move();
 
         assertEquals(expected, board.getBoard());
-        verify(mockGameOutput).printBoard(board.getBoard());
     }
 }

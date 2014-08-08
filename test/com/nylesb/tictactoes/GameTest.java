@@ -29,13 +29,14 @@ public class GameTest {
     }
 
     @Test
-    public void shouldTellPlayer1ToMakeAMove()  {
+    public void shouldTellPlayer1ToMakeAMoveAndPrint() throws Exception {
         String expected = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
 
         game.tellPlayerToMakeAMove(1);
 
         verify(game.getPlayer(1)).move();
         verify(mockGameOutput).print(expected);
+        verify(mockBoard).display();
     }
 
     @Test
