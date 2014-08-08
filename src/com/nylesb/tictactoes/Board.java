@@ -30,7 +30,7 @@ public class Board {
             return true;
         }
         else {
-            gameOutput.print("Location already taken");
+            gameOutput.print("Location already taken, try again: ");
             return false;
         }
     }

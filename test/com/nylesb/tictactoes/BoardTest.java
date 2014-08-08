@@ -50,7 +50,7 @@ public class BoardTest {
 
     @Test
     public void shouldNotifyOfInvalidUpdates() throws Exception {
-        String expected = "Location already taken";
+        String expected = "Location already taken, try again: ";
 
         board.update(1, "X");
         board.update(1, "O");
