@@ -30,16 +30,16 @@ public class GameTest {
 
     @Test
     public void shouldTellPlayer1ToMakeAMove()  {
-        game.tellPlayerToMakeAMove();
+        game.tellPlayerToMakeAMove(1);
 
-        verify(mockPlayer1).move();
+        verify(game.getPlayer(1)).move();
     }
 
     @Test
     public void shouldDisplayPromptMessageForPlayer1ToMakeMove() throws Exception {
         String expected = "Player 1 - Enter a number between 1 and 9 to indicate your move: ";
 
-        game.tellPlayerToMakeAMove();
+        game.tellPlayerToMakeAMove(1);
 
         verify(mockGameOutput).print(expected);
     }
@@ -48,5 +48,12 @@ public class GameTest {
     public void shouldContainTwoPlayerObjects() throws Exception {
         assert(game.getPlayer(1) instanceof Player);
         assert(game.getPlayer(2) instanceof Player);
+    }
+
+    @Test
+    public void shouldTellPlayer2ToMakeAMove() throws Exception {
+        game.tellPlayerToMakeAMove(2);
+
+        verify(game.getPlayer(2)).move();
     }
 }

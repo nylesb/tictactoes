@@ -15,6 +15,6 @@ public class Main {
         Player player2 = new Player(new UserInput(bufferedReader), board);
         Game game = new Game(board, player1, player2, gameOutput);
         game.displayBoard();
-        game.tellPlayerToMakeAMove();
+        game.tellPlayerToMakeAMove(2);
     }
 }
