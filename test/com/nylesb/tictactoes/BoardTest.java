@@ -12,6 +12,7 @@ import static org.mockito.MockitoAnnotations.initMocks;
 
 public class BoardTest {
     private ArrayList<String> emptyBoard = new ArrayList<String>();
+    private Board board;
     @Mock private GameOutput mockGameOutput;
 
     @Before
@@ -20,11 +21,11 @@ public class BoardTest {
         for (int i = 0; i < 9; i++) {
             emptyBoard.add(" ");
         }
+        board = new Board(mockGameOutput);
     }
 
     @org.junit.Test
     public void shouldDisplayEmptyBoard() throws Exception {
-        Board board = new Board(mockGameOutput);
         board.display();
 
         verify(mockGameOutput).printBoard(emptyBoard);
@@ -34,8 +35,6 @@ public class BoardTest {
     public void shouldInitializeEmptyBoard() throws Exception {
         ArrayList<String> expected = emptyBoard;
 
-        Board board = new Board(mockGameOutput);
-
         assertEquals(expected, board.getBoard());
     }
 
@@ -44,9 +43,18 @@ public class BoardTest {
         ArrayList<String> expected = emptyBoard;
         expected.set(0, "X");
 
-        Board board = new Board(mockGameOutput);
         board.update(1, "X");
 
         assertEquals(expected, board.getBoard());
+    }
+
+    @Test
+    public void shouldNotifyOfInvalidUpdates() throws Exception {
+        String expected = "Location already taken";
+
+        board.update(1, "X");
+        board.update(1, "O");
+
+        verify(mockGameOutput).print(expected);
     }
 }

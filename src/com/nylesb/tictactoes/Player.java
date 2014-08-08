@@ -6,7 +6,7 @@ package com.nylesb.tictactoes;
 public class Player {
     private UserInput userInput;
     private Board board;
-    private String token;
+    private String token = "D";
 
     public Player(UserInput userInput, Board board) {
         this.userInput = userInput;

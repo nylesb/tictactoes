@@ -25,6 +25,11 @@ public class Board {
     }
 
     public void update(int position, String value) {
-        state.set(position - 1 , value);
+        if(state.get(position - 1) == " ") {
+            state.set(position - 1, value);
+        }
+        else {
+            gameOutput.print("Location already taken");
+        }
     }
 }
